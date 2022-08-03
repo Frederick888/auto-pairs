@@ -483,7 +483,7 @@ fun! autopairs#AutoPairsDetermineCRMovement()
 endfun
 
 func! autopairs#AutoPairsReturn()
-    if b:autopairs_enabled == 0 || b:AutoPairsIgnoreSingle
+    if b:autopairs_enabled == 0 || b:AutoPairsIgnoreSingle || pumvisible() || (exists('*coc#pum#visible') && coc#pum#visible())
         let b:AutoPairsIgnoreSingle = 0
         return ''
     end
